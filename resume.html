@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>曾宇蕎 - 個人履歷</title>
+    <style>
+        /* CSS 樣式設定 */
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .resume-container {
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            margin: 40px auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 頁首區塊 */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .header-info h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 2px;
+        }
+
+        .header-info p {
+            margin: 5px 0;
+            opacity: 0.9;
+        }
+
+        /* 內容區塊 */
+        .content {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: #f0f7ff;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8em;
+            color: #888;
+            border-top: 1px solid #eee;
+        }
+
+        /* 手機版優化 */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-container">
+        <header>
+            <img src="https://images.weserv.nl/?url=i.imgur.com/v8uI5jO.png" alt="曾宇蕎" class="profile-img" id="photo">
+            <div class="header-info">
+                <h1 id="name">曾宇蕎</h1>
+                <p>學號：<span id="student-id">AU114018066</span></p>
+                <p>Email：<a href="mailto:114018066@live.asia.edu.tw" style="color: #3498db; text-decoration: none;">114018066@live.asia.edu.tw</a></p>
+            </div>
+        </header>
+
+        <div class="content">
+            <section>
+                <h2>關於我 / Summary</h2>
+                <p>目前就讀於亞洲大學，具備良好的學習態度與團隊協作能力。專注於學術研究並積極參與各項專業技能培訓，致力於將所學知識應用於實際專案中。</p>
+            </section>
+
+            <section>
+                <h2>教育背景 / Education</h2>
+                <div class="card">
+                    <strong>亞洲大學 (Asia University)</strong><br>
+                    <span>資訊相關科系 | 2022 - 至今</span>
+                </div>
+            </section>
+
+            <section>
+                <h2>專業技能 / Skills</h2>
+                <div id="skills-container">
+                    </div>
+            </section>
+
+            <section>
+                <h2>語言能力 / Languages</h2>
+                <div class="info-grid">
+                    <div class="card">中文 (母語)</div>
+                    <div class="card">英文 (日常溝通)</div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            © <span id="year"></span> 曾宇蕎 個人履歷 - 僅供教學參考使用
+        </footer>
+    </div>
+
+    <script>
+        // JavaScript 負責動態資料與互動
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. 動態設定年份
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // 2. 動態生成技能標籤
+            const skills = ['Python', 'C++', 'SQL', 'HTML/CSS', 'Git', 'Office 軟體應用'];
+            const skillContainer = document.getElementById('skills-container');
+            
+            skills.forEach(skill => {
+                const span = document.createElement('span');
+                span.className = 'skill-tag';
+                span.textContent = skill;
+                skillContainer.appendChild(span);
+            });
+
+            // 3. 點擊圖片的小互動
+            const photo = document.getElementById('photo');
+            photo.onclick = () => {
+                photo.style.transform = 'scale(1.1) rotate(5deg)';
+                setTimeout(() => {
+                    photo.style.transform = 'scale(1) rotate(0deg)';
+                }, 300);
+            };
+
+            // 注意：關於圖片，建議將該檔案與此 HTML 放在同一資料夾，並將 <img> 的 src 改為 "IMG_4886 (1).jpg"
+        });
+    </script>
+</body>
+</html>
