@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>曾宇蕎 - 專業個人履歷</title>
+    <title>曾宇蕎 - 個人履歷</title>
     <style>
         :root {
-            --primary-blue: #1a3a5c; /* 深邃藍 */
-            --accent-blue: #3498db;  /* 天空藍 */
+            --primary-blue: #1a3a5c; 
+            --accent-blue: #3498db;  
             --light-blue: #ebf5fb;
             --white: #ffffff;
             --text-dark: #2c3e50;
@@ -15,7 +15,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Roboto', 'Microsoft JhengHei', sans-serif;
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             background: var(--bg-gradient);
             color: var(--text-dark);
             margin: 0;
@@ -25,23 +25,23 @@
         }
 
         .resume-wrapper {
-            max-width: 1000px;
+            max-width: 950px;
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(15px);
             border-radius: 30px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
             overflow: hidden;
-            display: flex; /* 改為 flex 讓佈局更靈活 */
+            display: flex;
             min-height: 800px;
         }
 
-        /* 左側側欄 - 基本資料加強區 */
+        /* 左側側欄 - 放大個人資訊 */
         .sidebar {
-            width: 380px;
+            width: 350px;
             background-color: var(--primary-blue);
             color: white;
-            padding: 50px 35px;
+            padding: 50px 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -49,54 +49,49 @@
         }
 
         .profile-img {
-            width: 200px; /* 放大照片 */
-            height: 200px;
-            border-radius: 25px; /* 改為方圓形更有設計感 */
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
             border: 6px solid rgba(255,255,255,0.2);
             object-fit: cover;
-            margin-bottom: 25px;
-            transition: all 0.4s ease;
+            margin-bottom: 20px;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: 0.3s;
         }
-        .profile-img:hover { transform: scale(1.05); border-color: var(--accent-blue); }
+        .profile-img:hover { transform: scale(1.05); }
 
-        /* 基本資料放大 */
         .sidebar h1 { 
             margin: 10px 0; 
-            font-size: 2.8em; 
-            letter-spacing: 8px; 
-            font-weight: 700;
+            font-size: 2.5em; 
+            letter-spacing: 6px; 
         }
-        .sidebar .title-tag { 
+        
+        .mbti-tag {
             background: var(--accent-blue);
-            padding: 5px 20px;
-            border-radius: 50px;
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            font-weight: 300;
+            padding: 4px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 25px;
         }
 
         .contact-info {
             width: 100%;
             text-align: left;
-            font-size: 1.05em; /* 字體放大 */
-            line-height: 2;
-            background: rgba(255,255,255,0.05);
-            padding: 25px;
-            border-radius: 20px;
-            border-left: 4px solid var(--accent-blue);
+            font-size: 1.1em;
+            line-height: 1.8;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
         }
 
-        .contact-info p { margin: 12px 0; display: flex; align-items: center; gap: 10px; }
+        .contact-info p { margin: 10px 0; }
 
-        /* 音樂播放器美化 */
         audio {
             width: 100%;
-            margin: 30px 0;
-            height: 40px;
-            border-radius: 10px;
-            filter: opacity(0.8) hue-rotate(180deg);
+            margin: 25px 0;
+            height: 35px;
+            filter: invert(100%);
+            opacity: 0.7;
         }
 
         /* 右側主內容 */
@@ -106,83 +101,59 @@
             background: var(--white);
         }
 
-        section { margin-bottom: 45px; }
+        section { margin-bottom: 40px; }
 
         .section-header {
-            font-size: 1.6em;
+            font-size: 1.5em;
             color: var(--primary-blue);
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
         .section-header::after {
             content: "";
             height: 2px;
             flex: 1;
-            background: linear-gradient(to right, var(--accent-blue), transparent);
+            background: #eee;
         }
 
-        /* 卡片設計 */
-        .info-card {
-            background: var(--light-blue);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 20px;
-            transition: 0.3s;
-            border: 1px solid rgba(52, 152, 219, 0.1);
+        .content-card {
+            background: #f8fbfc;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid var(--accent-blue);
+            margin-bottom: 15px;
         }
-        .info-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
 
-        .info-card h4 { margin: 0 0 15px 0; font-size: 1.3em; color: var(--primary-blue); }
+        .content-card h4 { margin: 0 0 10px 0; color: var(--primary-blue); }
+        .content-card p { margin: 0; font-size: 0.95em; color: #555; line-height: 1.6; }
 
-        .score-grid {
+        /* 比賽清單 */
+        .list-item {
+            margin-bottom: 15px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 15px 0;
+            gap: 15px;
         }
-        .score-item {
-            background: var(--white);
+        .year-pill {
+            background: var(--light-blue);
             color: var(--accent-blue);
-            padding: 5px 15px;
+            padding: 2px 12px;
             border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.9em;
-            border: 1px solid var(--accent-blue);
-        }
-
-        /* 時間軸成就 */
-        .achievement-list {
-            border-left: 3px solid var(--light-blue);
-            padding-left: 30px;
-            margin-left: 10px;
-        }
-        .achievement-item {
-            position: relative;
-            margin-bottom: 25px;
-        }
-        .achievement-item::before {
-            content: "";
-            position: absolute;
-            left: -39px;
-            top: 5px;
-            width: 15px;
-            height: 15px;
-            background: var(--accent-blue);
-            border-radius: 50%;
-            border: 4px solid var(--white);
-            box-shadow: 0 0 0 3px var(--light-blue);
+            font-weight: bold;
+            font-size: 0.85em;
+            white-space: nowrap;
+            height: fit-content;
         }
 
         #skills-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 850px) {
             .resume-wrapper { flex-direction: column; }
             .sidebar { width: 100%; box-sizing: border-box; }
         }
@@ -195,7 +166,7 @@
             <img src="images/img_4886.jpg" alt="曾宇蕎" class="profile-img" id="photo">
             
             <h1>曾宇蕎</h1>
-            <div class="title-tag">聽力暨語言治療專業</div>
+            <div class="mbti-tag">INFP | 聽語系大一新鮮人</div>
 
             <audio controls>
                 <source src="mp3/bg.mp3" type="audio/mpeg">
@@ -203,68 +174,61 @@
             </audio>
             
             <div class="contact-info">
-                <p>🆔 學號：AU114018066</p>
-                <p>📧 郵件：114018066@live.asia.edu.tw</p>
-                <p>🎸 社團：吉他教學 / 美宣幹部</p>
-                <p>🗣️ 證照：客語初級認證通過</p>
-                <p>🏆 資格：CPR+AED 合格</p>
+                <p>📍 亞洲大學 AU114018066</p>
+                <p>📧 114018066@live.asia.edu.tw</p>
+                <p>🎸 吉他教學 / 美宣幹部</p>
+                <p>💬 客語初級認證通過</p>
+                <p>🛡️ CPR+AED 合格證照</p>
             </div>
+            
+            <p style="margin-top: 30px; font-size: 0.85em; opacity: 0.7; line-height: 1.5;">
+                喜歡音樂與幫助他人<br>正在探索聽語專業的小路上
+            </p>
         </aside>
 
         <main class="main-content">
             <section>
-                <div class="section-header">教育背景與學術表現</div>
-                <div class="info-card">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <h4>亞洲大學 聽力暨語言治療學系</h4>
-                        <span style="color: var(--accent-blue); font-weight: bold;">2025 - 至今</span>
-                    </div>
-                    <div class="score-grid">
-                        <span class="score-item">在校成績 25%</span>
-                        <span class="score-item">化學 5%</span>
-                        <span class="score-item">生物 8%</span>
-                        <span class="score-item">物理 13%</span>
-                    </div>
-                    <p style="line-height: 1.6; color: #666; font-size: 0.95em;">
-                        深耕生醫領域，具備紮實的自然科學基礎與臨床探究熱忱，致力於聽力與語言復健專業學習。
+                <div class="section-header">關於我</div>
+                <div class="content-card">
+                    <h4>目前就讀：亞洲大學 聽力暨語言治療學系</h4>
+                    <p>
+                        2025 年進入亞洲大學，雖然還在專業學習的起步階段，但我對聽力評估與語言治療充滿好奇。希望能結合自己的耐心與親和力，在未來成為一名專業的助人者。
                     </p>
                 </div>
             </section>
 
             <section>
-                <div class="section-header">核心競爭力</div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div class="info-card" style="margin-bottom: 0;">
-                        <h4 style="font-size: 1.1em;">團隊協作與溝通</h4>
-                        <p style="font-size: 0.9em; color: #666;">曾任衛生股長、吉他社幹部。善於運用同理心與溝通技巧解決團隊問題。</p>
+                <div class="section-header">社團與幹部經歷</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="content-card">
+                        <h4>吉他社 - 幹部經驗</h4>
+                        <p>曾擔任吉他教學與美宣幹部，負責籌備多校聯展，擅長團隊溝通與活動視覺設計。</p>
                     </div>
-                    <div class="info-card" style="margin-bottom: 0;">
-                        <h4 style="font-size: 1.1em;">自主學習與挑戰</h4>
-                        <p style="font-size: 0.9em; color: #666;">結合生醫知識探索身心反應，克服考場與舞台緊張，展現極佳的抗壓與適應力。</p>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-header">獲獎歷程</div>
-                <div class="achievement-list">
-                    <div class="achievement-item">
-                        <strong style="color: var(--primary-blue);">113 學年度</strong>
-                        <div style="color: #555; margin-top: 5px;">校園整潔 第一名 / 班際跳繩比賽 第三名</div>
-                    </div>
-                    <div class="achievement-item">
-                        <strong style="color: var(--primary-blue);">112 學年度</strong>
-                        <div style="color: #555; margin-top: 5px;">桌球女子組 冠軍 / 英語歌唱比賽 第二名</div>
-                    </div>
-                    <div class="achievement-item">
-                        <strong style="color: var(--primary-blue);">111 學年度</strong>
-                        <div style="color: #555; margin-top: 5px;">中學生網站閱讀心得比賽 佳作</div>
+                    <div class="content-card">
+                        <h4>班級服務</h4>
+                        <p>曾任衛生股長、英文及物理小老師，具備穩定負責的態度，樂於協助同學解決問題。</p>
                     </div>
                 </div>
             </section>
 
             <section>
-                <div class="section-header">專業技能清單</div>
+                <div class="section-header">活動與獲獎紀錄</div>
+                <div class="list-item">
+                    <span class="year-pill">113 學年度</span>
+                    <div>校園整潔比賽 第一名 / 班際跳繩比賽 第三名</div>
+                </div>
+                <div class="list-item">
+                    <span class="year-pill">112 學年度</span>
+                    <div>班際桌球女子組 冠軍 / 英語歌唱比賽 第二名</div>
+                </div>
+                <div class="list-item">
+                    <span class="year-pill">111 學年度</span>
+                    <div>中學生網站閱讀心得比賽 佳作</div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">目前的技能點</div>
                 <div id="skills-container"></div>
             </section>
         </main>
@@ -272,31 +236,29 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 動態生成藍色系技能標籤
+            // 符合大一現狀的技能標籤
             const skills = [
-                'HTML/CSS', 'Python 數據處理', '視覺美宣設計', '急救護理知識'
+                '吉他彈奏與教學', '美宣海報設計', '基礎 HTML/CSS', 
+                '文書處理 (Office)', '客語溝通', '團隊合作'
             ];
             const skillContainer = document.getElementById('skills-container');
             
             skills.forEach(skill => {
                 const span = document.createElement('span');
                 span.style.cssText = `
-                    display: inline-block; background: white; color: #3498db;
-                    padding: 8px 18px; border-radius: 12px; font-size: 0.9em;
-                    font-weight: 600; border: 2px solid #ebf5fb;
-                    box-shadow: 2px 4px 10px rgba(0,0,0,0.03);
+                    display: inline-block; background: #ebf5fb; color: #1a3a5c;
+                    padding: 7px 15px; border-radius: 10px; font-size: 0.9em;
+                    font-weight: 500; border: 1px solid #d6eaf8;
                 `;
                 span.textContent = skill;
                 skillContainer.appendChild(span);
             });
 
-            // 照片點擊動效
             const photo = document.getElementById('photo');
             photo.onclick = () => {
-                photo.style.transform = 'scale(1.1) rotate(-3deg)';
-                setTimeout(() => {
-                    photo.style.transform = 'scale(1) rotate(0deg)';
-                }, 300);
+                photo.style.transform = 'rotate(360deg)';
+                photo.style.transition = '0.8s';
+                setTimeout(() => { photo.style.transform = 'rotate(0deg)'; }, 800);
             };
         });
     </script>
