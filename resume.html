@@ -3,172 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>曾宇蕎 - 個人履歷</title>
+    <title>曾宇蕎 - 專業個人履歷</title>
     <style>
         :root {
-            --medical-teal: #4a7c59; /* 呼應妳提供的圖示色系 */
-            --soft-gold: #c5a059;
-            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            --glass: rgba(255, 255, 255, 0.9);
+            --primary-blue: #1a3a5c; /* 深邃藍 */
+            --accent-blue: #3498db;  /* 天空藍 */
+            --light-blue: #ebf5fb;
+            --white: #ffffff;
+            --text-dark: #2c3e50;
+            --bg-gradient: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
         }
 
         body {
-            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+            font-family: 'Segoe UI', 'Roboto', 'Microsoft JhengHei', sans-serif;
             background: var(--bg-gradient);
-            color: #333;
+            color: var(--text-dark);
             margin: 0;
-            padding: 20px;
+            padding: 40px 20px;
             display: flex;
             justify-content: center;
         }
 
         .resume-wrapper {
-            max-width: 900px;
+            max-width: 1000px;
             width: 100%;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
             overflow: hidden;
-            display: grid;
-            grid-template-columns: 320px 1fr;
+            display: flex; /* 改為 flex 讓佈局更靈活 */
+            min-height: 800px;
         }
 
-        /* 左側側欄 - 個人特質、基礎資訊與音樂 */
+        /* 左側側欄 - 基本資料加強區 */
         .sidebar {
-            background-color: var(--medical-teal);
+            width: 380px;
+            background-color: var(--primary-blue);
             color: white;
-            padding: 40px 30px;
-            text-align: center;
+            padding: 50px 35px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
         }
 
         .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 5px solid rgba(255,255,255,0.3);
+            width: 200px; /* 放大照片 */
+            height: 200px;
+            border-radius: 25px; /* 改為方圓形更有設計感 */
+            border: 6px solid rgba(255,255,255,0.2);
             object-fit: cover;
-            margin-bottom: 20px;
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 25px;
+            transition: all 0.4s ease;
             cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .profile-img:hover { transform: scale(1.05); border-color: var(--accent-blue); }
+
+        /* 基本資料放大 */
+        .sidebar h1 { 
+            margin: 10px 0; 
+            font-size: 2.8em; 
+            letter-spacing: 8px; 
+            font-weight: 700;
+        }
+        .sidebar .title-tag { 
+            background: var(--accent-blue);
+            padding: 5px 20px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            font-weight: 300;
         }
 
-        /* 音樂播放器樣式優化 */
+        .contact-info {
+            width: 100%;
+            text-align: left;
+            font-size: 1.05em; /* 字體放大 */
+            line-height: 2;
+            background: rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 20px;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .contact-info p { margin: 12px 0; display: flex; align-items: center; gap: 10px; }
+
+        /* 音樂播放器美化 */
         audio {
             width: 100%;
-            margin: 20px 0;
-            height: 35px;
-            filter: sepia(20%) saturate(70%) grayscale(1) contrast(90%) invert(100%); /* 讓播放器顏色更融入深色背景 */
-        }
-
-        .sidebar h1 { margin: 10px 0; font-size: 2em; letter-spacing: 5px; }
-        .sidebar p { opacity: 0.9; font-size: 0.9em; margin: 5px 0; }
-
-        .contact-box {
-            background: rgba(255,255,255,0.1);
+            margin: 30px 0;
+            height: 40px;
             border-radius: 10px;
-            padding: 15px;
-            margin: 10px 0;
-            text-align: left;
-            font-size: 0.85em;
-            width: 100%;
-        }
-
-        .badge-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .badge {
-            background: var(--soft-gold);
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8em;
-            font-weight: bold;
+            filter: opacity(0.8) hue-rotate(180deg);
         }
 
         /* 右側主內容 */
         .main-content {
-            padding: 40px;
-            background: white;
+            flex: 1;
+            padding: 50px;
+            background: var(--white);
         }
 
-        section { margin-bottom: 40px; }
+        section { margin-bottom: 45px; }
 
-        .section-title {
+        .section-header {
+            font-size: 1.6em;
+            color: var(--primary-blue);
+            font-weight: 700;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            color: var(--medical-teal);
-            font-size: 1.4em;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        .section-title::before {
-            content: "◆";
-            margin-right: 10px;
-            font-size: 0.8em;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
             gap: 15px;
         }
+        .section-header::after {
+            content: "";
+            height: 2px;
+            flex: 1;
+            background: linear-gradient(to right, var(--accent-blue), transparent);
+        }
 
-        .skill-card {
-            background: #f9fbf9;
-            border-left: 4px solid var(--medical-teal);
-            padding: 15px;
-            border-radius: 8px;
+        /* 卡片設計 */
+        .info-card {
+            background: var(--light-blue);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
             transition: 0.3s;
+            border: 1px solid rgba(52, 152, 219, 0.1);
         }
-        .skill-card:hover { background: #eff5ef; transform: translateX(5px); }
+        .info-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
 
-        .timeline {
-            position: relative;
-            padding-left: 20px;
-            border-left: 2px dashed #ddd;
+        .info-card h4 { margin: 0 0 15px 0; font-size: 1.3em; color: var(--primary-blue); }
+
+        .score-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
         }
-        .timeline-item {
-            margin-bottom: 15px;
-            position: relative;
+        .score-item {
+            background: var(--white);
+            color: var(--accent-blue);
+            padding: 5px 15px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9em;
+            border: 1px solid var(--accent-blue);
         }
-        .timeline-item::before {
+
+        /* 時間軸成就 */
+        .achievement-list {
+            border-left: 3px solid var(--light-blue);
+            padding-left: 30px;
+            margin-left: 10px;
+        }
+        .achievement-item {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        .achievement-item::before {
             content: "";
             position: absolute;
-            left: -27px;
+            left: -39px;
             top: 5px;
-            width: 12px;
-            height: 12px;
-            background: var(--medical-teal);
+            width: 15px;
+            height: 15px;
+            background: var(--accent-blue);
             border-radius: 50%;
+            border: 4px solid var(--white);
+            box-shadow: 0 0 0 3px var(--light-blue);
         }
 
-        .year-label {
-            font-weight: bold;
-            color: var(--medical-teal);
-            font-size: 0.9em;
+        #skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .score-tag {
-            background: #e8f0eb;
-            color: var(--medical-teal);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.8em;
-            margin-right: 5px;
-        }
-
-        @media (max-width: 850px) {
-            .resume-wrapper { grid-template-columns: 1fr; }
-            .card-grid { grid-template-columns: 1fr; }
+        @media (max-width: 900px) {
+            .resume-wrapper { flex-direction: column; }
+            .sidebar { width: 100%; box-sizing: border-box; }
         }
     </style>
 </head>
@@ -179,78 +195,76 @@
             <img src="images/img_4886.jpg" alt="曾宇蕎" class="profile-img" id="photo">
             
             <h1>曾宇蕎</h1>
-            <p>聽力暨語言治療專業</p>
+            <div class="title-tag">聽力暨語言治療專業</div>
 
             <audio controls>
                 <source src="mp3/bg.mp3" type="audio/mpeg">
                 您的瀏覽器不支持音頻播放。
             </audio>
             
-            <div class="contact-box">
-                <p>📍 亞洲大學 AU114018066</p>
-                <p>📧 114018066@live.asia.edu.tw</p>
-                <p>🎸 吉他教學 / 美宣幹部</p>
-                <p>🗣️ 客語初級認證通過</p>
-            </div>
-
-            <div class="badge-container">
-                <div class="badge">CPR+AED 合格</div>
-                <div class="badge">INFP 特質</div>
-                <div class="badge">跨域學習</div>
+            <div class="contact-info">
+                <p>🆔 學號：AU114018066</p>
+                <p>📧 郵件：114018066@live.asia.edu.tw</p>
+                <p>🎸 社團：吉他教學 / 美宣幹部</p>
+                <p>🗣️ 證照：客語初級認證通過</p>
+                <p>🏆 資格：CPR+AED 合格</p>
             </div>
         </aside>
 
         <main class="main-content">
             <section>
-                <div class="section-title">教育與適性發展</div>
-                <div class="skill-card" style="border-left-color: var(--soft-gold);">
-                    <h4 style="display: flex; justify-content: space-between; margin: 0 0 10px 0;">
-                        亞洲大學 聽力暨語言治療學系 <span>2022 - 至今</span>
-                    </h4>
-                    <div>
-                        <span class="score-tag">在校成績 25%</span>
-                        <span class="score-tag">化學 5%</span>
-                        <span class="score-tag">生物 8%</span>
-                        <span class="score-tag">物理 13%</span>
+                <div class="section-header">教育背景與學術表現</div>
+                <div class="info-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h4>亞洲大學 聽力暨語言治療學系</h4>
+                        <span style="color: var(--accent-blue); font-weight: bold;">2025 - 至今</span>
                     </div>
-                    <p style="margin-top: 10px; font-size: 0.85em;">對生醫領域具濃厚興趣，高二即選定生醫A組，展現對自然科學之熱忱。</p>
+                    <div class="score-grid">
+                        <span class="score-item">在校成績 25%</span>
+                        <span class="score-item">化學 5%</span>
+                        <span class="score-item">生物 8%</span>
+                        <span class="score-item">物理 13%</span>
+                    </div>
+                    <p style="line-height: 1.6; color: #666; font-size: 0.95em;">
+                        深耕生醫領域，具備紮實的自然科學基礎與臨床探究熱忱，致力於聽力與語言復健專業學習。
+                    </p>
                 </div>
             </section>
 
             <section>
-                <div class="section-title">核心優勢</div>
-                <div class="card-grid">
-                    <div class="skill-card">
-                        <h4>良好溝通與責任感</h4>
-                        <p style="font-size: 0.85em;">曾任衛生股長、吉他社幹部。擅長運用溝通技巧促進團隊合作。</p>
+                <div class="section-header">核心競爭力</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="info-card" style="margin-bottom: 0;">
+                        <h4 style="font-size: 1.1em;">團隊協作與溝通</h4>
+                        <p style="font-size: 0.9em; color: #666;">曾任衛生股長、吉他社幹部。善於運用同理心與溝通技巧解決團隊問題。</p>
                     </div>
-                    <div class="skill-card">
-                        <h4>勇於面對挑戰</h4>
-                        <p style="font-size: 0.85em;">結合生物醫療知識探索身心反應，自主學習並克服緊張與困難。</p>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="section-title">歷程成就 / Achievements</div>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <span class="year-label">113 學年度</span>
-                        <p style="font-size: 0.9em; margin: 5px 0;">校園整潔 第一名 / 班際跳繩 第三名</p>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="year-label">112 學年度</span>
-                        <p style="font-size: 0.9em; margin: 5px 0;">桌球女子組 冠軍 / 英語歌唱比賽 第二名</p>
-                    </div>
-                    <div class="timeline-item">
-                        <span class="year-label">111 學年度</span>
-                        <p style="font-size: 0.9em; margin: 5px 0;">中學生網站閱讀心得比賽 佳作</p>
+                    <div class="info-card" style="margin-bottom: 0;">
+                        <h4 style="font-size: 1.1em;">自主學習與挑戰</h4>
+                        <p style="font-size: 0.9em; color: #666;">結合生醫知識探索身心反應，克服考場與舞台緊張，展現極佳的抗壓與適應力。</p>
                     </div>
                 </div>
             </section>
 
             <section>
-                <div class="section-title">專業技能 / Skills</div>
+                <div class="section-header">獲獎歷程</div>
+                <div class="achievement-list">
+                    <div class="achievement-item">
+                        <strong style="color: var(--primary-blue);">113 學年度</strong>
+                        <div style="color: #555; margin-top: 5px;">校園整潔 第一名 / 班際跳繩比賽 第三名</div>
+                    </div>
+                    <div class="achievement-item">
+                        <strong style="color: var(--primary-blue);">112 學年度</strong>
+                        <div style="color: #555; margin-top: 5px;">桌球女子組 冠軍 / 英語歌唱比賽 第二名</div>
+                    </div>
+                    <div class="achievement-item">
+                        <strong style="color: var(--primary-blue);">111 學年度</strong>
+                        <div style="color: #555; margin-top: 5px;">中學生網站閱讀心得比賽 佳作</div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-header">專業技能清單</div>
                 <div id="skills-container"></div>
             </section>
         </main>
@@ -258,25 +272,28 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 動態技能標籤
-            const skills = ['聽力評估', '語言病理', 'HTML/CSS', 'Python', '美宣設計', 'CPR+AED'];
+            // 動態生成藍色系技能標籤
+            const skills = [
+                'HTML/CSS', 'Python 數據處理', '視覺美宣設計', '急救護理知識'
+            ];
             const skillContainer = document.getElementById('skills-container');
             
             skills.forEach(skill => {
                 const span = document.createElement('span');
                 span.style.cssText = `
-                    display: inline-block; background: #e8f0eb; color: #4a7c59;
-                    padding: 6px 15px; border-radius: 20px; font-size: 0.85em;
-                    margin: 5px; font-weight: 500; border: 1px solid #c9d6ce;
+                    display: inline-block; background: white; color: #3498db;
+                    padding: 8px 18px; border-radius: 12px; font-size: 0.9em;
+                    font-weight: 600; border: 2px solid #ebf5fb;
+                    box-shadow: 2px 4px 10px rgba(0,0,0,0.03);
                 `;
                 span.textContent = skill;
                 skillContainer.appendChild(span);
             });
 
-            // 圖片互動 (同第一版)
+            // 照片點擊動效
             const photo = document.getElementById('photo');
             photo.onclick = () => {
-                photo.style.transform = 'scale(1.1) rotate(5deg)';
+                photo.style.transform = 'scale(1.1) rotate(-3deg)';
                 setTimeout(() => {
                     photo.style.transform = 'scale(1) rotate(0deg)';
                 }, 300);
