@@ -5,207 +5,275 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>曾宇蕎 - 個人履歷</title>
     <style>
-        /* CSS 樣式設定 */
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --bg-color: #f4f7f6;
-            --text-color: #333;
+            --medical-teal: #4a7c59; /* 呼應妳提供的圖示色系 */
+            --soft-gold: #c5a059;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --glass: rgba(255, 255, 255, 0.9);
         }
 
         body {
-            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
+            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+            background: var(--bg-gradient);
+            color: #333;
             margin: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
 
-        .resume-container {
-            background: white;
-            width: 90%;
-            max-width: 800px;
-            margin: 40px auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-radius: 8px;
+        .resume-wrapper {
+            max-width: 900px;
+            width: 100%;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             overflow: hidden;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+        }
+
+        /* 左側側欄 - 個人特質、基礎資訊與音樂 */
+        .sidebar {
+            background-color: var(--medical-teal);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
             display: flex;
             flex-direction: column;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* 頁首區塊 */
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 40px;
-            display: flex;
             align-items: center;
-            gap: 30px;
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            border: 4px solid white;
+            border: 5px solid rgba(255,255,255,0.3);
             object-fit: cover;
-            background-color: #eee;
+            margin-bottom: 20px;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
         }
 
-        .header-info h1 {
-            margin: 0;
-            font-size: 2.5em;
-            letter-spacing: 2px;
+        /* 音樂播放器樣式優化 */
+        audio {
+            width: 100%;
+            margin: 20px 0;
+            height: 35px;
+            filter: sepia(20%) saturate(70%) grayscale(1) contrast(90%) invert(100%); /* 讓播放器顏色更融入深色背景 */
         }
 
-        .header-info p {
-            margin: 5px 0;
-            opacity: 0.9;
+        .sidebar h1 { margin: 10px 0; font-size: 2em; letter-spacing: 5px; }
+        .sidebar p { opacity: 0.9; font-size: 0.9em; margin: 5px 0; }
+
+        .contact-box {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: left;
+            font-size: 0.85em;
+            width: 100%;
         }
 
-        /* 內容區塊 */
-        .content {
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .badge {
+            background: var(--soft-gold);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        /* 右側主內容 */
+        .main-content {
             padding: 40px;
+            background: white;
         }
 
-        section {
-            margin-bottom: 30px;
-        }
+        section { margin-bottom: 40px; }
 
-        h2 {
-            border-left: 5px solid var(--accent-color);
-            padding-left: 15px;
-            color: var(--primary-color);
-            text-transform: uppercase;
+        .section-title {
+            display: flex;
+            align-items: center;
+            color: var(--medical-teal);
+            font-size: 1.4em;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
             margin-bottom: 20px;
         }
 
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: #fafafa;
-            padding: 20px;
-            border-radius: 5px;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            background: #f0f7ff;
-        }
-
-        .skill-tag {
-            display: inline-block;
-            background: var(--accent-color);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            margin: 5px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
+        .section-title::before {
+            content: "◆";
+            margin-right: 10px;
             font-size: 0.8em;
-            color: #888;
-            border-top: 1px solid #eee;
         }
 
-        /* 手機版優化 */
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .skill-card {
+            background: #f9fbf9;
+            border-left: 4px solid var(--medical-teal);
+            padding: 15px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .skill-card:hover { background: #eff5ef; transform: translateX(5px); }
+
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px dashed #ddd;
+        }
+        .timeline-item {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -27px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--medical-teal);
+            border-radius: 50%;
+        }
+
+        .year-label {
+            font-weight: bold;
+            color: var(--medical-teal);
+            font-size: 0.9em;
+        }
+
+        .score-tag {
+            background: #e8f0eb;
+            color: var(--medical-teal);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-right: 5px;
+        }
+
+        @media (max-width: 850px) {
+            .resume-wrapper { grid-template-columns: 1fr; }
+            .card-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="resume-container">
-        <header>
-        <img src="images/img_4886.jpg" alt="曾宇蕎" class="profile-img">
-            <div class="header-info">
-                <h1 id="name">曾宇蕎</h1>
-                <p>學號：<span id="student-id">AU114018066</span></p>
-                <p>Email：<a href="mailto:114018066ㄔㄛ@live.asia.edu.tw" style="color: #3498db; text-decoration: none;">114018066@live.asia.edu.tw</a></p>
+    <div class="resume-wrapper">
+        <aside class="sidebar">
+            <img src="images/img_4886.jpg" alt="曾宇蕎" class="profile-img" id="photo">
+            
+            <h1>曾宇蕎</h1>
+            <p>聽力暨語言治療專業</p>
+
+            <audio controls>
+                <source src="mp3/bg.mp3" type="audio/mpeg">
+                您的瀏覽器不支持音頻播放。
+            </audio>
+            
+            <div class="contact-box">
+                <p>📍 亞洲大學 AU114018066</p>
+                <p>📧 114018066@live.asia.edu.tw</p>
+                <p>🎸 吉他教學 / 美宣幹部</p>
+                <p>🗣️ 客語初級認證通過</p>
             </div>
 
-             <audio controls>
-  <source src="mp3/bg.mp3" type="audio/mpeg">
-Your browser does not support the audio element.
-</audio>
+            <div class="badge-container">
+                <div class="badge">CPR+AED 合格</div>
+                <div class="badge">INFP 特質</div>
+                <div class="badge">跨域學習</div>
+            </div>
+        </aside>
 
-        </header>
-
-        <div class="content">
+        <main class="main-content">
             <section>
-                <h2>關於我 / Summary</h2>
-                <p>目前就讀於亞洲大學，具備良好的學習態度與團隊協作能力。專注於學術研究並積極參與各項專業技能培訓，致力於將所學知識應用於實際專案中。</p>
-            </section>
-
-            <section>
-                <h2>教育背景 / Education</h2>
-                <div class="card">
-                    <strong>亞洲大學 (Asia University)</strong><br>
-                    <span>資訊相關科系 | 2022 - 至今</span>
-                </div>
-            </section>
-
-            <section>
-                <h2>專業技能 / Skills</h2>
-                <div id="skills-container">
+                <div class="section-title">教育與適性發展</div>
+                <div class="skill-card" style="border-left-color: var(--soft-gold);">
+                    <h4 style="display: flex; justify-content: space-between; margin: 0 0 10px 0;">
+                        亞洲大學 聽力暨語言治療學系 <span>2022 - 至今</span>
+                    </h4>
+                    <div>
+                        <span class="score-tag">在校成績 25%</span>
+                        <span class="score-tag">化學 5%</span>
+                        <span class="score-tag">生物 8%</span>
+                        <span class="score-tag">物理 13%</span>
                     </div>
+                    <p style="margin-top: 10px; font-size: 0.85em;">對生醫領域具濃厚興趣，高二即選定生醫A組，展現對自然科學之熱忱。</p>
+                </div>
             </section>
 
             <section>
-                <h2>語言能力 / Languages</h2>
-                <div class="info-grid">
-                    <div class="card">中文 (母語)</div>
-                    <div class="card">英文 (日常溝通)</div>
+                <div class="section-title">核心優勢</div>
+                <div class="card-grid">
+                    <div class="skill-card">
+                        <h4>良好溝通與責任感</h4>
+                        <p style="font-size: 0.85em;">曾任衛生股長、吉他社幹部。擅長運用溝通技巧促進團隊合作。</p>
+                    </div>
+                    <div class="skill-card">
+                        <h4>勇於面對挑戰</h4>
+                        <p style="font-size: 0.85em;">結合生物醫療知識探索身心反應，自主學習並克服緊張與困難。</p>
+                    </div>
                 </div>
             </section>
-        </div>
 
-        <footer>
-            © <span id="year"></span> 曾宇蕎 個人履歷 - 僅供教學參考使用
-        </footer>
+            <section>
+                <div class="section-title">歷程成就 / Achievements</div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="year-label">113 學年度</span>
+                        <p style="font-size: 0.9em; margin: 5px 0;">校園整潔 第一名 / 班際跳繩 第三名</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="year-label">112 學年度</span>
+                        <p style="font-size: 0.9em; margin: 5px 0;">桌球女子組 冠軍 / 英語歌唱比賽 第二名</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="year-label">111 學年度</span>
+                        <p style="font-size: 0.9em; margin: 5px 0;">中學生網站閱讀心得比賽 佳作</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="section-title">專業技能 / Skills</div>
+                <div id="skills-container"></div>
+            </section>
+        </main>
     </div>
 
     <script>
-        // JavaScript 負責動態資料與互動
         document.addEventListener('DOMContentLoaded', () => {
-            
-            // 1. 動態設定年份
-            document.getElementById('year').textContent = new Date().getFullYear();
-
-            // 2. 動態生成技能標籤
-            const skills = ['Python', 'C++', 'SQL', 'HTML/CSS', 'Git', 'Office 軟體應用'];
+            // 動態技能標籤
+            const skills = ['聽力評估', '語言病理', 'HTML/CSS', 'Python', '美宣設計', 'CPR+AED'];
             const skillContainer = document.getElementById('skills-container');
             
             skills.forEach(skill => {
                 const span = document.createElement('span');
-                span.className = 'skill-tag';
+                span.style.cssText = `
+                    display: inline-block; background: #e8f0eb; color: #4a7c59;
+                    padding: 6px 15px; border-radius: 20px; font-size: 0.85em;
+                    margin: 5px; font-weight: 500; border: 1px solid #c9d6ce;
+                `;
                 span.textContent = skill;
                 skillContainer.appendChild(span);
             });
 
-            // 3. 點擊圖片的小互動
+            // 圖片互動 (同第一版)
             const photo = document.getElementById('photo');
             photo.onclick = () => {
                 photo.style.transform = 'scale(1.1) rotate(5deg)';
@@ -213,8 +281,6 @@ Your browser does not support the audio element.
                     photo.style.transform = 'scale(1) rotate(0deg)';
                 }, 300);
             };
-
-            // 注意：關於圖片，建議將該檔案與此 HTML 放在同一資料夾，並將 <img> 的 src 改為 "IMG_4886 (1).jpg"
         });
     </script>
 </body>
